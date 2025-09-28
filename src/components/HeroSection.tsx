@@ -1,86 +1,144 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import heroImage from '@/assets/hero-iphone.jpg';
+import Autoplay from 'embla-carousel-autoplay';
 
 const HeroSection = () => {
-  return (
-    <section className="gradient-hero py-16 px-4">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Content */}
-          <div className="space-y-8 animate-slide-up">
-            <div className="space-y-4">
-              <h1 className="text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-                The latest.
-              </h1>
-              <p className="text-xl text-muted-foreground max-w-md">
-                Take a look at what's new, right now.
-              </p>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="gradient-primary text-white font-semibold shadow-primary">
-                Shop iPhone 15 Pro
-              </Button>
-              <Button variant="outline" size="lg" className="font-semibold">
-                Explore All Products
-              </Button>
-            </div>
+  const heroSlides = [
+    {
+      id: 1,
+      title: "MacBook Pro",
+      subtitle: "M4 PRO",
+      description: "Hello, Apple Intelligence.",
+      image: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=800&h=600&fit=crop",
+      gradient: "from-slate-900 to-slate-800",
+      textColor: "text-white"
+    },
+    {
+      id: 2,
+      title: "iPad",
+      subtitle: "Air",
+      description: "Flight speed",
+      image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&h=600&fit=crop", 
+      gradient: "from-blue-600 to-purple-600",
+      textColor: "text-white"
+    },
+    {
+      id: 3,
+      title: "iPhone 15",
+      subtitle: "Pro Max",
+      description: "Titanium. So strong. So light.",
+      image: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=800&h=600&fit=crop",
+      gradient: "from-gray-900 to-black",
+      textColor: "text-white"
+    }
+  ];
 
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-foreground">500+</div>
-                <div className="text-sm text-muted-foreground">Products</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-foreground">10K+</div>
-                <div className="text-sm text-muted-foreground">Happy Customers</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-foreground">99%</div>
-                <div className="text-sm text-muted-foreground">Satisfaction</div>
-              </div>
-            </div>
+  return (
+    <section className="relative">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="grid lg:grid-cols-4 gap-6">
+          {/* Main Hero Carousel */}
+          <div className="lg:col-span-3">
+            <Carousel
+              opts={{ align: "start", loop: true }}
+              plugins={[Autoplay({ delay: 5000 })]}
+              className="w-full"
+            >
+              <CarouselContent>
+                {heroSlides.map((slide) => (
+                  <CarouselItem key={slide.id}>
+                    <div className={`relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden bg-gradient-to-br ${slide.gradient}`}>
+                      <div className="absolute inset-0 flex items-center justify-between p-8 lg:p-12">
+                        <div className={`space-y-4 ${slide.textColor} max-w-md`}>
+                          <div className="space-y-2">
+                            <div className="flex items-center gap-3">
+                              <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+                                <span className="text-black font-bold text-sm">🍎</span>
+                              </div>
+                              <h1 className="text-3xl lg:text-5xl font-bold">
+                                {slide.title}
+                                <span className="block text-2xl lg:text-4xl opacity-90">
+                                  {slide.subtitle}
+                                </span>
+                              </h1>
+                            </div>
+                            <p className="text-lg lg:text-xl opacity-90 font-medium">
+                              {slide.description}
+                            </p>
+                          </div>
+                        </div>
+                        
+                        <div className="hidden lg:block">
+                          <img
+                            src={slide.image}
+                            alt={slide.title}
+                            className="w-80 h-60 object-cover rounded-2xl shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500"
+                          />
+                        </div>
+                      </div>
+                      
+                      {/* Navigation Arrows */}
+                      <div className="absolute left-4 top-1/2 -translate-y-1/2">
+                        <CarouselPrevious className="static bg-white/20 border-white/30 text-white hover:bg-white/30" />
+                      </div>
+                      <div className="absolute right-4 top-1/2 -translate-y-1/2">
+                        <CarouselNext className="static bg-white/20 border-white/30 text-white hover:bg-white/30" />
+                      </div>
+                      
+                      {/* Dot indicators */}
+                      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+                        {heroSlides.map((_, index) => (
+                          <div
+                            key={index}
+                            className="w-2 h-2 rounded-full bg-white/50 data-[active]:bg-white transition-all"
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
           </div>
 
-          {/* Hero Image */}
-          <div className="relative animate-fade-in">
-            <div className="relative bg-gradient-to-br from-white to-muted rounded-3xl p-8 shadow-hover">
-              <img
-                src={heroImage}
-                alt="Latest iPhone 15 Pro"
-                className="w-full h-auto object-contain max-w-md mx-auto"
-              />
-              
-              {/* Floating Elements */}
-              <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-semibold">
-                NEW
-              </div>
-              
-              <div className="absolute bottom-4 left-4 bg-card/90 backdrop-blur-sm rounded-lg p-3 shadow-card">
-                <div className="text-sm font-semibold">iPhone 15 Pro</div>
-                <div className="text-xs text-muted-foreground">Starting at $999</div>
+          {/* Side Banners */}
+          <div className="space-y-6">
+            {/* CMF Buds Banner */}
+            <div className="relative h-[235px] rounded-2xl overflow-hidden bg-gradient-to-br from-blue-100 to-blue-200">
+              <div className="absolute inset-0 p-6 flex flex-col justify-between">
+                <div>
+                  <div className="text-sm font-medium text-blue-900 mb-2">cmf</div>
+                  <div className="text-xl font-bold text-blue-900">BUDS PRO 2</div>
+                </div>
+                <div className="flex justify-end">
+                  <img
+                    src="https://images.unsplash.com/photo-1588423771073-b8903fbb85b5?w=200&h=150&fit=crop"
+                    alt="CMF Buds Pro 2"
+                    className="w-24 h-20 object-cover rounded-lg"
+                  />
+                </div>
               </div>
             </div>
 
-            {/* Navigation Arrows */}
-            <Button 
-              variant="outline" 
-              size="sm"
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 rounded-full w-10 h-10 p-0 shadow-card bg-card/90 backdrop-blur-sm"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </Button>
-            
-            <Button 
-              variant="outline" 
-              size="sm"
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 rounded-full w-10 h-10 p-0 shadow-card bg-card/90 backdrop-blur-sm"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </Button>
+            {/* Galaxy Watch Banner */}
+            <div className="relative h-[235px] rounded-2xl overflow-hidden bg-gradient-to-br from-blue-600 to-blue-800">
+              <div className="absolute inset-0 p-6 flex flex-col justify-between text-white">
+                <div>
+                  <div className="text-xl font-bold mb-2">Galaxy Watch Ultra</div>
+                  <div className="text-sm opacity-90">Galaxy AI ✨</div>
+                </div>
+                <div className="flex justify-end">
+                  <img
+                    src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=200&h=150&fit=crop"
+                    alt="Galaxy Watch Ultra"
+                    className="w-24 h-20 object-cover rounded-lg"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
 import { Star, Heart, ShoppingCart } from 'lucide-react';
 
 const ProductGrid = () => {
@@ -91,86 +92,96 @@ const ProductGrid = () => {
           </Button>
         </div>
 
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {products.map((product) => (
-            <div 
-              key={product.id}
-              className="group bg-card rounded-2xl shadow-card hover:shadow-hover transition-smooth border overflow-hidden"
-            >
-              {/* Product Image */}
-              <div className="relative overflow-hidden bg-muted/30">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                
-                {/* Badge */}
-                <Badge className={`absolute top-4 left-4 ${product.badgeColor} text-white`}>
-                  {product.badge}
-                </Badge>
+        {/* Products Carousel */}
+        <Carousel
+          opts={{ 
+            align: "start", 
+            loop: false,
+            slidesToScroll: 1
+          }}
+          className="w-full"
+        >
+          <CarouselContent className="-ml-8">
+            {products.map((product) => (
+              <CarouselItem key={product.id} className="pl-8 basis-full sm:basis-1/2 lg:basis-1/3">
+                <div className="group bg-card rounded-2xl shadow-card hover:shadow-hover transition-smooth border overflow-hidden h-full">
+                  {/* Product Image */}
+                  <div className="relative overflow-hidden bg-muted/30">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    
+                    {/* Badge */}
+                    <Badge className={`absolute top-4 left-4 ${product.badgeColor} text-white`}>
+                      {product.badge}
+                    </Badge>
 
-                {/* Wishlist Button */}
-                <Button
-                  variant="secondary"
-                  size="sm"
-                  className="absolute top-4 right-4 w-8 h-8 rounded-full p-0 opacity-0 group-hover:opacity-100 transition-opacity"
-                >
-                  <Heart className="w-4 h-4" />
-                </Button>
+                    {/* Wishlist Button */}
+                    <Button
+                      variant="secondary"
+                      size="sm"
+                      className="absolute top-4 right-4 w-8 h-8 rounded-full p-0 opacity-0 group-hover:opacity-100 transition-opacity"
+                    >
+                      <Heart className="w-4 h-4" />
+                    </Button>
 
-                {/* Quick Actions */}
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <Button size="sm" className="gradient-primary text-white shadow-primary">
-                    <ShoppingCart className="w-4 h-4 mr-2" />
-                    Add to Cart
-                  </Button>
-                </div>
-              </div>
-
-              {/* Product Info */}
-              <div className="p-6">
-                <h3 className="font-semibold text-lg text-foreground mb-2 line-clamp-2">
-                  {product.name}
-                </h3>
-
-                {/* Rating */}
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="flex items-center">
-                    <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                    <span className="text-sm font-medium ml-1">{product.rating}</span>
+                    {/* Quick Actions */}
+                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <Button size="sm" className="gradient-primary text-white shadow-primary">
+                        <ShoppingCart className="w-4 h-4 mr-2" />
+                        Add to Cart
+                      </Button>
+                    </div>
                   </div>
-                  <span className="text-sm text-muted-foreground">
-                    ({product.reviews} reviews)
-                  </span>
-                </div>
 
-                {/* Price */}
-                <div className="flex items-center gap-2 mb-4">
-                  <span className="text-2xl font-bold text-foreground">
-                    ${product.price}
-                  </span>
-                  {product.originalPrice && (
-                    <span className="text-lg text-muted-foreground line-through">
-                      ${product.originalPrice}
-                    </span>
-                  )}
-                </div>
+                  {/* Product Info */}
+                  <div className="p-6">
+                    <h3 className="font-semibold text-lg text-foreground mb-2 line-clamp-2">
+                      {product.name}
+                    </h3>
 
-                {/* Action Buttons */}
-                <div className="flex gap-2">
-                  <Button className="flex-1 gradient-primary text-white">
-                    Buy Now
-                  </Button>
-                  <Button variant="outline" size="sm" className="px-3">
-                    <ShoppingCart className="w-4 h-4" />
-                  </Button>
+                    {/* Rating */}
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="flex items-center">
+                        <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                        <span className="text-sm font-medium ml-1">{product.rating}</span>
+                      </div>
+                      <span className="text-sm text-muted-foreground">
+                        ({product.reviews} reviews)
+                      </span>
+                    </div>
+
+                    {/* Price */}
+                    <div className="flex items-center gap-2 mb-4">
+                      <span className="text-2xl font-bold text-foreground">
+                        ${product.price}
+                      </span>
+                      {product.originalPrice && (
+                        <span className="text-lg text-muted-foreground line-through">
+                          ${product.originalPrice}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="flex gap-2">
+                      <Button className="flex-1 gradient-primary text-white">
+                        Buy Now
+                      </Button>
+                      <Button variant="outline" size="sm" className="px-3">
+                        <ShoppingCart className="w-4 h-4" />
+                      </Button>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
-        </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="hidden lg:flex -left-12" />
+          <CarouselNext className="hidden lg:flex -right-12" />
+        </Carousel>
 
         {/* View All Button - Mobile */}
         <div className="text-center mt-8 md:hidden">

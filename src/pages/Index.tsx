@@ -4,6 +4,7 @@ import ProductBanners from '@/components/ProductBanners';
 import ServiceFeatures from '@/components/ServiceFeatures';
 import FeaturedCategories from '@/components/FeaturedCategories';
 import ProductGrid from '@/components/ProductGrid';
+import PreOrderSection from '@/components/PreOrderSection';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -13,6 +14,7 @@ const Index = () => {
       <HeroSection />
       <ProductBanners />
       <ServiceFeatures />
+      <PreOrderSection />
       <FeaturedCategories />
       <ProductGrid />
       <Footer />
