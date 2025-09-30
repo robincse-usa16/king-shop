@@ -156,13 +156,17 @@ const ProductDetails = () => {
               <h1 className="text-3xl font-bold text-foreground">{product.name}</h1>
 
               {/* Price */}
-              <div className="flex items-baseline gap-3">
-                <span className="text-3xl font-bold text-foreground">৳ {product.price.toLocaleString()}</span>
-                <span className="text-sm text-muted-foreground">(Cash Price)</span>
-                <Badge variant="secondary" className="bg-success/10 text-success">
-                  {product.discount}
-                </Badge>
-                <span className="text-lg text-muted-foreground line-through">৳ {product.originalPrice?.toLocaleString()}</span>
+              <div className="space-y-2">
+                <div className="flex items-baseline gap-3 flex-wrap">
+                  <span className="text-3xl font-bold text-foreground">৳ {product.price.toLocaleString()}</span>
+                  <span className="text-base text-muted-foreground">(Cash Price)</span>
+                  <Badge variant="secondary" className="bg-success/10 text-success text-base px-3 py-1">
+                    {product.discount}
+                  </Badge>
+                </div>
+                <div className="text-lg text-muted-foreground line-through">
+                  Regular: ৳ {product.originalPrice?.toLocaleString()}
+                </div>
               </div>
 
               <div className="flex items-center gap-4 text-sm">

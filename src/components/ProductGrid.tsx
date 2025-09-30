@@ -117,7 +117,7 @@ const ProductGrid = () => {
         >
           <CarouselContent className="-ml-6">
             {products.map((product) => (
-              <CarouselItem key={product.id} className="pl-6 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5">
+              <CarouselItem key={product.id} className="pl-6 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-[22%]">
                 <div 
                   className="group bg-card rounded-xl shadow-card hover:shadow-hover transition-smooth border overflow-hidden h-full cursor-pointer"
                   onClick={() => window.location.href = `/product/${product.id}`}
