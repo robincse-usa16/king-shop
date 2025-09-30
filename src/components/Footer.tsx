@@ -1,7 +1,15 @@
-import React from 'react';
-import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import React from "react";
+import {
+  Facebook,
+  Twitter,
+  Instagram,
+  Youtube,
+  Mail,
+  Phone,
+  MapPin,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 const Footer = () => {
   return (
@@ -13,16 +21,12 @@ const Footer = () => {
             Stay Updated with Latest Offers
           </h3>
           <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-            Subscribe to our newsletter and be the first to know about new products, exclusive deals, and special offers.
+            Subscribe to our newsletter and be the first to know about new
+            products, exclusive deals, and special offers.
           </p>
           <div className="flex max-w-md mx-auto gap-2">
-            <Input 
-              placeholder="Enter your email" 
-              className="flex-1"
-            />
-            <Button className="gradient-primary text-white">
-              Subscribe
-            </Button>
+            <Input placeholder="Enter your email" className="flex-1" />
+            <Button className="gradient-primary text-white">Subscribe</Button>
           </div>
         </div>
       </div>
@@ -34,11 +38,11 @@ const Footer = () => {
             {/* Company Info */}
             <div className="space-y-4">
               <div className="text-2xl font-bold text-foreground">
-                🍎 <span className="text-primary">Apple</span>Gadgets
+                👑 <span className="text-primary">King </span> Shop
               </div>
               <p className="text-muted-foreground">
-                Your trusted partner for premium Apple products and accessories. 
-                We deliver quality, authenticity, and exceptional service.
+                Your trusted partner for premium products and accessories. We
+                deliver quality, authenticity, and exceptional service.
               </p>
               <div className="flex space-x-4">
                 <Button variant="outline" size="sm" className="p-2">
@@ -58,19 +62,24 @@ const Footer = () => {
 
             {/* Quick Links */}
             <div>
-              <h4 className="font-semibold text-foreground mb-4">Quick Links</h4>
+              <h4 className="font-semibold text-foreground mb-4">
+                Quick Links
+              </h4>
               <ul className="space-y-3">
                 {[
-                  'About Us',
-                  'Contact',
-                  'Blog',
-                  'Pre-order',
-                  'Offers',
-                  'Compare Products',
-                  'Track Order'
+                  "About Us",
+                  "Contact",
+                  "Blog",
+                  "Pre-order",
+                  "Offers",
+                  "Compare Products",
+                  "Track Order",
                 ].map((link) => (
                   <li key={link}>
-                    <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                    <a
+                      href="#"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
                       {link}
                     </a>
                   </li>
@@ -83,16 +92,19 @@ const Footer = () => {
               <h4 className="font-semibold text-foreground mb-4">Categories</h4>
               <ul className="space-y-3">
                 {[
-                  'iPhone',
-                  'iPad',
-                  'MacBook',
-                  'Apple Watch',
-                  'AirPods',
-                  'Accessories',
-                  'Used Devices'
+                  "iPhone",
+                  "iPad",
+                  "MacBook",
+                  "Apple Watch",
+                  "AirPods",
+                  "Accessories",
+                  "Used Devices",
                 ].map((category) => (
                   <li key={category}>
-                    <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                    <a
+                      href="#"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
                       {category}
                     </a>
                   </li>
@@ -102,7 +114,9 @@ const Footer = () => {
 
             {/* Contact Info */}
             <div>
-              <h4 className="font-semibold text-foreground mb-4">Contact Info</h4>
+              <h4 className="font-semibold text-foreground mb-4">
+                Contact Info
+              </h4>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <MapPin className="w-5 h-5 text-primary flex-shrink-0" />
@@ -112,9 +126,7 @@ const Footer = () => {
                 </div>
                 <div className="flex items-center space-x-3">
                   <Phone className="w-5 h-5 text-primary flex-shrink-0" />
-                  <span className="text-muted-foreground">
-                    +8801XXXXXXXXX
-                  </span>
+                  <span className="text-muted-foreground">+8801XXXXXXXXX</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="w-5 h-5 text-primary flex-shrink-0" />
@@ -136,13 +148,22 @@ const Footer = () => {
               © 2024 AppleGadgets. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a
+                href="#"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
                 Privacy Policy
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a
+                href="#"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
                 Terms of Service
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a
+                href="#"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
                 Returns
               </a>
             </div>

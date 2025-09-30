@@ -1,9 +1,15 @@
-import React from 'react';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import Autoplay from 'embla-carousel-autoplay';
+import React from "react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from "@/components/ui/carousel";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import Autoplay from "embla-carousel-autoplay";
 
 const HeroSection = () => {
   const heroSlides = [
@@ -12,28 +18,31 @@ const HeroSection = () => {
       title: "MacBook Pro",
       subtitle: "M4 PRO",
       description: "Hello, Apple Intelligence.",
-      image: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=800&h=600&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=800&h=600&fit=crop",
       gradient: "from-slate-900 to-slate-800",
-      textColor: "text-white"
+      textColor: "text-white",
     },
     {
       id: 2,
       title: "iPad",
       subtitle: "Air",
       description: "Flight speed",
-      image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&h=600&fit=crop", 
+      image:
+        "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&h=600&fit=crop",
       gradient: "from-blue-600 to-purple-600",
-      textColor: "text-white"
+      textColor: "text-white",
     },
     {
       id: 3,
       title: "iPhone 15",
       subtitle: "Pro Max",
       description: "Titanium. So strong. So light.",
-      image: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=800&h=600&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=800&h=600&fit=crop",
       gradient: "from-gray-900 to-black",
-      textColor: "text-white"
-    }
+      textColor: "text-white",
+    },
   ];
 
   return (
@@ -50,13 +59,19 @@ const HeroSection = () => {
               <CarouselContent>
                 {heroSlides.map((slide) => (
                   <CarouselItem key={slide.id}>
-                    <div className={`relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden bg-gradient-to-br ${slide.gradient}`}>
+                    <div
+                      className={`relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden bg-gradient-to-br ${slide.gradient}`}
+                    >
                       <div className="absolute inset-0 flex items-center justify-between p-8 lg:p-12">
-                        <div className={`space-y-4 ${slide.textColor} max-w-md`}>
+                        <div
+                          className={`space-y-4 ${slide.textColor} max-w-md`}
+                        >
                           <div className="space-y-2">
                             <div className="flex items-center gap-3">
                               <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-                                <span className="text-black font-bold text-sm">🍎</span>
+                                <span className="text-black font-bold text-sm">
+                                  👑
+                                </span>
                               </div>
                               <h1 className="text-3xl lg:text-5xl font-bold">
                                 {slide.title}
@@ -70,7 +85,7 @@ const HeroSection = () => {
                             </p>
                           </div>
                         </div>
-                        
+
                         <div className="hidden lg:block">
                           <img
                             src={slide.image}
@@ -79,7 +94,7 @@ const HeroSection = () => {
                           />
                         </div>
                       </div>
-                      
+
                       {/* Navigation Arrows */}
                       <div className="absolute left-4 top-1/2 -translate-y-1/2">
                         <CarouselPrevious className="static bg-white/20 border-white/30 text-white hover:bg-white/30" />
@@ -87,7 +102,7 @@ const HeroSection = () => {
                       <div className="absolute right-4 top-1/2 -translate-y-1/2">
                         <CarouselNext className="static bg-white/20 border-white/30 text-white hover:bg-white/30" />
                       </div>
-                      
+
                       {/* Dot indicators */}
                       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
                         {heroSlides.map((_, index) => (
@@ -110,8 +125,12 @@ const HeroSection = () => {
             <div className="relative h-[235px] rounded-2xl overflow-hidden bg-gradient-to-br from-blue-100 to-blue-200">
               <div className="absolute inset-0 p-6 flex flex-col justify-between">
                 <div>
-                  <div className="text-sm font-medium text-blue-900 mb-2">cmf</div>
-                  <div className="text-xl font-bold text-blue-900">BUDS PRO 2</div>
+                  <div className="text-sm font-medium text-blue-900 mb-2">
+                    cmf
+                  </div>
+                  <div className="text-xl font-bold text-blue-900">
+                    BUDS PRO 2
+                  </div>
                 </div>
                 <div className="flex justify-end">
                   <img
@@ -127,7 +146,9 @@ const HeroSection = () => {
             <div className="relative h-[235px] rounded-2xl overflow-hidden bg-gradient-to-br from-blue-600 to-blue-800">
               <div className="absolute inset-0 p-6 flex flex-col justify-between text-white">
                 <div>
-                  <div className="text-xl font-bold mb-2">Galaxy Watch Ultra</div>
+                  <div className="text-xl font-bold mb-2">
+                    Galaxy Watch Ultra
+                  </div>
                   <div className="text-sm opacity-90">Galaxy AI ✨</div>
                 </div>
                 <div className="flex justify-end">

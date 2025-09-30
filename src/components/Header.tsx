@@ -1,23 +1,31 @@
-import React, { useState } from 'react';
-import { Search, ShoppingCart, User, Menu, Bell, RotateCcw, Scale } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
+import React, { useState } from "react";
+import {
+  Search,
+  ShoppingCart,
+  User,
+  Menu,
+  Bell,
+  RotateCcw,
+  Scale,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigationItems = [
-    { name: 'Apple Products', href: '/apple' },
-    { name: 'Phones', href: '/phones' },
-    { name: 'Tablet', href: '/tablet' },
-    { name: 'Sound Equipment', href: '/audio' },
-    { name: 'Power & Accessories', href: '/accessories' },
-    { name: 'Fitness & Wearable', href: '/wearable' },
-    { name: 'Peripherals', href: '/peripherals' },
-    { name: 'Cover & Glass', href: '/protection' },
-    { name: 'Smart Electronics', href: '/smart' },
-    { name: 'Used Device', href: '/used' },
+    { name: "Apple Products", href: "/apple" },
+    { name: "Phones", href: "/phones" },
+    { name: "Tablet", href: "/tablet" },
+    { name: "Sound Equipment", href: "/audio" },
+    { name: "Power & Accessories", href: "/accessories" },
+    { name: "Fitness & Wearable", href: "/wearable" },
+    { name: "Peripherals", href: "/peripherals" },
+    { name: "Cover & Glass", href: "/protection" },
+    { name: "Smart Electronics", href: "/smart" },
+    { name: "Used Device", href: "/used" },
   ];
 
   return (
@@ -39,7 +47,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center">
             <div className="text-2xl font-bold text-foreground">
-              🍎 <span className="text-primary">Apple</span>Gadgets
+              👑 <span className="text-primary">King </span> Shop
             </div>
           </div>
 
@@ -56,20 +64,36 @@ const Header = () => {
 
           {/* Navigation Actions */}
           <div className="flex items-center space-x-4">
-            <Button variant="ghost" size="sm" className="hidden lg:flex items-center gap-2">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="hidden lg:flex items-center gap-2"
+            >
               📝 Blog
             </Button>
-            
-            <Button variant="ghost" size="sm" className="hidden lg:flex items-center gap-2">
+
+            <Button
+              variant="ghost"
+              size="sm"
+              className="hidden lg:flex items-center gap-2"
+            >
               <Bell className="w-4 h-4" />
               Pre-order
             </Button>
-            
-            <Button variant="secondary" size="sm" className="hidden lg:flex items-center gap-2">
+
+            <Button
+              variant="secondary"
+              size="sm"
+              className="hidden lg:flex items-center gap-2"
+            >
               🔥 Offers
             </Button>
-            
-            <Button variant="ghost" size="sm" className="hidden lg:flex items-center gap-2">
+
+            <Button
+              variant="ghost"
+              size="sm"
+              className="hidden lg:flex items-center gap-2"
+            >
               <Scale className="w-4 h-4" />
               Compare
             </Button>
