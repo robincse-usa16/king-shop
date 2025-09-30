@@ -79,17 +79,31 @@ const ProductGrid = () => {
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="flex justify-between items-center mb-12">
-          <div>
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              Featured Products
+          <div className="flex gap-8 items-center">
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
+              Featured <span className="text-gradient">Products</span>
             </h2>
-            <p className="text-muted-foreground text-lg">
-              Discover our most popular Apple products
-            </p>
+            <div className="flex gap-4">
+              <Button variant="default" className="bg-foreground text-background rounded-full px-6">
+                BEST DEALS
+              </Button>
+              <Button variant="ghost" className="text-muted-foreground rounded-full px-6">
+                TOP SELLING
+              </Button>
+            </div>
           </div>
-          <Button variant="outline" className="hidden md:flex">
-            View All Products
-          </Button>
+          <div className="flex gap-2">
+            <Button variant="outline" size="icon" className="rounded-full">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </Button>
+            <Button variant="outline" size="icon" className="rounded-full">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Button>
+          </div>
         </div>
 
         {/* Products Carousel */}
@@ -101,79 +115,58 @@ const ProductGrid = () => {
           }}
           className="w-full"
         >
-          <CarouselContent className="-ml-8">
+          <CarouselContent className="-ml-6">
             {products.map((product) => (
-              <CarouselItem key={product.id} className="pl-8 basis-full sm:basis-1/2 lg:basis-1/3">
-                <div className="group bg-card rounded-2xl shadow-card hover:shadow-hover transition-smooth border overflow-hidden h-full">
+              <CarouselItem key={product.id} className="pl-6 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5">
+                <div 
+                  className="group bg-card rounded-xl shadow-card hover:shadow-hover transition-smooth border overflow-hidden h-full cursor-pointer"
+                  onClick={() => window.location.href = `/product/${product.id}`}
+                >
                   {/* Product Image */}
-                  <div className="relative overflow-hidden bg-muted/30">
+                  <div className="relative overflow-hidden bg-muted/30 p-4">
                     <img
                       src={product.image}
                       alt={product.name}
-                      className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-48 object-cover rounded-lg group-hover:scale-105 transition-transform duration-500"
                     />
                     
                     {/* Badge */}
-                    <Badge className={`absolute top-4 left-4 ${product.badgeColor} text-white`}>
+                    <Badge className={`absolute top-6 left-6 text-xs px-2 py-1 rounded-full ${
+                      product.badge === 'Best Seller' ? 'bg-success text-success-foreground' :
+                      product.badge === 'New Arrival' ? 'bg-info text-info-foreground' :
+                      product.badge.includes('OFF') ? 'bg-destructive text-destructive-foreground' :
+                      'bg-warning text-warning-foreground'
+                    }`}>
                       {product.badge}
                     </Badge>
-
-                    {/* Wishlist Button */}
-                    <Button
-                      variant="secondary"
-                      size="sm"
-                      className="absolute top-4 right-4 w-8 h-8 rounded-full p-0 opacity-0 group-hover:opacity-100 transition-opacity"
-                    >
-                      <Heart className="w-4 h-4" />
-                    </Button>
-
-                    {/* Quick Actions */}
-                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <Button size="sm" className="gradient-primary text-white shadow-primary">
-                        <ShoppingCart className="w-4 h-4 mr-2" />
-                        Add to Cart
-                      </Button>
-                    </div>
                   </div>
 
                   {/* Product Info */}
-                  <div className="p-6">
-                    <h3 className="font-semibold text-lg text-foreground mb-2 line-clamp-2">
+                  <div className="p-4">
+                    <h3 className="font-semibold text-base text-foreground mb-2 line-clamp-2 leading-tight">
                       {product.name}
                     </h3>
 
-                    {/* Rating */}
-                    <div className="flex items-center gap-2 mb-3">
-                      <div className="flex items-center">
-                        <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                        <span className="text-sm font-medium ml-1">{product.rating}</span>
-                      </div>
-                      <span className="text-sm text-muted-foreground">
-                        ({product.reviews} reviews)
-                      </span>
-                    </div>
-
                     {/* Price */}
-                    <div className="flex items-center gap-2 mb-4">
-                      <span className="text-2xl font-bold text-foreground">
-                        ${product.price}
+                    <div className="flex items-baseline gap-2 mb-3">
+                      <span className="text-xl font-bold text-foreground">
+                        ৳ {product.price.toLocaleString()}
                       </span>
                       {product.originalPrice && (
-                        <span className="text-lg text-muted-foreground line-through">
-                          ${product.originalPrice}
+                        <span className="text-sm text-muted-foreground line-through">
+                          ৳ {product.originalPrice.toLocaleString()}
                         </span>
                       )}
                     </div>
 
-                    {/* Action Buttons */}
-                    <div className="flex gap-2">
-                      <Button className="flex-1 gradient-primary text-white">
-                        Buy Now
-                      </Button>
-                      <Button variant="outline" size="sm" className="px-3">
-                        <ShoppingCart className="w-4 h-4" />
-                      </Button>
-                    </div>
+                    {/* Discount Badge */}
+                    {product.originalPrice && (
+                      <div className="flex items-center justify-between">
+                        <Badge variant="secondary" className="text-xs bg-success/10 text-success border-success/20">
+                          {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% OFF
+                        </Badge>
+                      </div>
+                    )}
                   </div>
                 </div>
               </CarouselItem>
